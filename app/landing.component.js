@@ -14,9 +14,9 @@ import 'rxjs/Rx';
             </div>
             <button type="button" class="btn btn-default" (click)=createShortUrl(target.value)>Create Short Url</button>
         </div>
-        <div [hidden]="!shortUrl">
-        your short url: is {{shortUrl}}
-        <a [href]="shortUrl">Click To Try it!</a>
+        <div *ngIf="shortUrlView.href">
+        your short url: is {{shortUrlView.href}}
+        <a [href]="shortUrlView.href">Click To Try it!</a>
         </div>
 
     </div>
@@ -26,7 +26,7 @@ export class LandingComponent {
 
     _http:Http;
 
-    shortUrl:String;
+    shortUrlView={};
 
     constructor(http:Http) {
 
@@ -40,16 +40,16 @@ export class LandingComponent {
     }
 
     createShortUrl(target:string) {
-        console.log(target);
 
         const headers = new Headers({'Content-Type': 'application/json'});
 
         this._http
             .post('http://api.urlable.com/short-urls', `"${target}"`, {headers: headers})
             .map(res => res.json())
-            .subscribe(shortUrl => {
-                console.log(shortUrl);
-                this.shortUrl = `http://${shortUrl.target}`
+            .subscribe(shortUrlView => {
+                this.shortUrlView = shortUrlView;
+                this.shortUrlView.href = `http://r.urlable.com/${shortUrlView.id}`;
+                alert(`your short url is ${this.shortUrlView.href}`);
             });
     }
 }
