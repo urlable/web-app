@@ -1,0 +1,6 @@
+description: creates a distributable package
+stages:
+- name: copy-artifacts-to-dist
+  type: dev-op
+- name: bundle
+  type: dev-op

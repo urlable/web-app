@@ -1,0 +1,8 @@
+version: "2"
+services:
+  copy-artifacts-to-dist:
+    extends:
+      service: src
+      file: ../.common/docker-compose.yml
+    image: alpine:3.3
+    entrypoint: .dev-op-spec/dev-ops/copy-artifacts-to-dist/entrypoint.sh

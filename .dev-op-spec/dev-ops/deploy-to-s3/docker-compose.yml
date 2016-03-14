@@ -1,0 +1,12 @@
+version: "2"
+services:
+  deploy-to-s3:
+    extends:
+      service: src
+      file: ../.common/docker-compose.yml
+    image: repworth/aws-cli:aws-cli1.10
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_DEFAULT_REGION=us-west-2
+    entrypoint: aws s3 sync dist s3://urlable-website --delete

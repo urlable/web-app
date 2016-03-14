@@ -1,0 +1,6 @@
+description: installs all dependencies
+stages:
+- name: install-npm-deps
+  type: dev-op
+- name: install-jspm-deps
+  type: dev-op

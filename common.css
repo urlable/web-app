@@ -1,0 +1,60 @@
+body {
+    color: white;
+    background-size: cover;
+    background-color: #4ab2d9;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+a:active {
+    color: white;
+}
+
+.top_nav_container {
+    padding-top: 5px;
+    background-color: #4ab2d9;
+}
+
+.top_nav_logo {
+    float: left;
+}
+
+.top_nav_logo img {
+    height: 25px;
+}
+
+.top_nav_bar {
+    float: right;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.top_nav_bar ul {
+    list-style-type: none;
+}
+
+.top_nav_bar li {
+    display: inline;
+}
+
+#logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 110px;
+    margin-left: -250px; /* Half the width */
+    margin-top: -55px; /* Half the height */
+}
+

@@ -1,0 +1,8 @@
+version: "2"
+services:
+  install-jspm-deps:
+    extends:
+      service: src
+      file: ../.common/docker-compose.yml
+    image: repworth/jspm-cli
+    entrypoint: jspm install

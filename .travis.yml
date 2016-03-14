@@ -1,0 +1,18 @@
+language: generic
+sudo: required
+before_script:
+- sudo apt-get remove --purge docker-engine
+- curl -fsSL https://get.docker.com/ | sh
+- sudo rm /usr/local/bin/docker-compose
+- sudo curl -L -o /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.6.0/docker-compose-Linux-x86_64
+- sudo chmod +x /usr/local/bin/docker-compose
+- sudo curl -L -o /usr/local/bin/dos https://github.com/dev-op-spec/cli/releases/download/0.7.0/dos-linux-x86_64
+- sudo chmod +x /usr/local/bin/dos
+services:
+- docker
+script:
+- dos pl run continuous-delivery
+env:
+  global:
+  - secure: RVEfv3M/OMPsoHPWnaXs3AEv9VPe4Ie5Qj7zbIWVoyA2vSsT5gq55bwFKSbDDkExMmFWa04wYon5bBgUiSdWyiwnZ3hfbvbw3MWoIqjzpPBErFKZODJ/OugOPInN61nJgzphsonaKEhzJtHxWE1Xcs2R4xtxqq83vIDejhQfX4sKMLQojXyGfqLOjLWGJGEmZEPcd6AXjtdLOHAJg926o91UZg5+2f95MbxUMIeKmrSeGGElbOCVZKrceBstUkHPzUkXuXvoSO08ogGzI2N2oSWC8NIfTKwEMrlByiDCjdwwqGhXmMS5qeOr9T6osj5h1bLqRA2YGwT33Hn36S79jhHt2aGCHg+5zVwd547/BLnpdQt+o64Y5mHJbRIzKqG84EPTpB33i99tnifNeyslu5fIA9UgnmJ8HnWN0/syiGNdL1d+U7AKanF+WUQ3YgFUnrimK1qQIY0T7TpeW+msnfrrJB8o43p9TcjAbeBkYpFteQFxqESOxorSlLXtRnCR27t3/1s2/uwI88jWNaA7UgxInV7VOIbVgPJYp1Bc3dcJwc94zavC90sL4h3Flw4Ofwzzx9sxBndA9iq39e8dnahYzgyaSUZZSmibWt4fKc/N+0TB0lBWhzHB/g+zXNw1PvzUsmoV7Zm3XNFHfBN8/viGd/aSXPpu3BYHKPzIXgg=
+  - secure: MbiUGV6KikjThLXN2sAM1MVQ3epmT/JlQOPheR0Hi5rN5fHgVuLLTvn6GL/9fm8yh2lU1NdMIpVau4De5/2uH5kHT1EB4Nj788xIGxkyPc6MlJupqQDRRwia11dPqljGp5R17wpHOQuMCC6zJBbjJumGZ277yK1MLAn+BTZZz846uVnyQ5sJXM8LU2ZmpWCAIUYJRNyVL6uw0ysq8M/OFq4fiGcCLeXxe+6guIG3f4eDEKLGCCQ6VWbpGQgvG9cOWwR4DHXol98fmjVZ2MCCKNd4VXB0fvNw/Gj4PDsBny5T3ddk27dtOGizD88WowhkZ2EsqQdQJa9hFqXonYZJ0K0hkca4RCpu5B821i44HFh2Vqgm3Ljs/i7U2JSH9XWgYdKF7NKg+XTJbYWdbM2ubez5fKAIDGulTJUf4qH1NofI4PRmvJ7aCf10gjtssWy5xcFJIDMIlWZ6rUT31y8OqVgR8Ho384Rs6zxCj8JVtcYdzF5mXEmCcBjhgdN3Hxwuc0wXduBJ7ElhzLhz1oFzihdh10jp6QDKH6Gr4Uzf+86Y+NewjZyXxuM4WbHOIMExkPRYefsMBP0DeBUg8NndTW4vKzL1x0JNr/jD9Y33vP9a7gspMNSXcWpLVCWfl3PXFnoPMHqnnUYzT9eYU4F5YyDjmP1GKTWg7pf+aHAUQh4=

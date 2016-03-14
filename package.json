@@ -1,0 +1,34 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "lite-server",
+    "postinstall": "jspm install"
+  },
+  "private": true,
+  "dependencies": {
+    "systemjs": "0.19.22",
+    "es6-promise": "^3.0.2"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.30",
+    "lite-server": "^2.1.0"
+  },
+  "jspm": {
+    "configFile": "jspm-config.js",
+    "dependencies": {
+      "angular2": "npm:angular2@^2.0.0-beta.9",
+      "css": "github:systemjs/plugin-css@^0.1.20",
+      "es6-shim": "github:es-shims/es6-shim@^0.35.0",
+      "reflect-metadata": "npm:reflect-metadata@^0.1.3",
+      "rxjs": "npm:rxjs@^5.0.0-beta.2",
+      "zone.js": "npm:zone.js@^0.6.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.10",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
