@@ -1,6 +1,7 @@
 import {Component,Inject} from 'angular2/core';
 import {Http,Headers,HTTP_PROVIDERS} from 'angular2/http';
 import {UrlValidator} from './url.validator';
+import {NgForm}    from 'angular2/common';
 import 'rxjs/Rx';
 
 @Component({
@@ -23,7 +24,7 @@ import 'rxjs/Rx';
             <div class="input-group input-group-lg">
                 <input type="url" class="form-control input-lg" [(ngModel)]="createShortUrlReqTarget" required validateUrl ngControl="target" placeholder="enter a url...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" [disabled]="!createShortUrlForm.form.valid" (click)=createShortUrl()>Shorten!</button>
+                    <button class="btn btn-default" type="submit" [disabled]="!createShortUrlForm.form.valid" (click)=createShortUrl()>Shorten!</button>
                 </span>
             </div>
         </form>
@@ -51,14 +52,14 @@ export class LandingComponent {
 
     createShortUrl() {
 
-        const headers = new Headers({'Content-Type': 'application/json'});
+            const headers = new Headers({'Content-Type': 'application/json'});
 
-        this._http
-            .post('http://api.urlable.com/short-urls', `"${this.createShortUrlReqTarget}"`, {headers: headers})
-            .map(res => res.json())
-            .subscribe(shortUrlView => {
-                this.shortUrlView = shortUrlView;
-                this.shortUrlView.href = `http://r.urlable.com/${shortUrlView.id}`;
-            });
+            this._http
+                .post('http://api.urlable.com/short-urls', `"${this.createShortUrlReqTarget}"`, {headers: headers})
+                .map(res => res.json())
+                .subscribe(shortUrlView => {
+                    this.shortUrlView = shortUrlView;
+                    this.shortUrlView.href = `http://r.urlable.com/${shortUrlView.id}`;
+                });
     }
 }
