@@ -33,6 +33,7 @@ System.config({
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "typescript": "npm:typescript@1.8.7",
+    "validator": "npm:validator@5.1.0",
     "zone.js": "npm:zone.js@0.6.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

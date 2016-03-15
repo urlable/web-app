@@ -5,4 +5,4 @@ services:
       service: src
       file: ../.common/docker-compose.yml
     image: repworth/jspm-cli
-    entrypoint: jspm bundle --minify app dist/bundle.min.js
+    entrypoint: jspm bundle app dist/bundle.min.js

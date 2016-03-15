@@ -1,10 +1,12 @@
 import {Component,Inject} from 'angular2/core';
 import {Http,Headers,HTTP_PROVIDERS} from 'angular2/http';
+import {UrlValidator} from './url.validator';
 import 'rxjs/Rx';
 
 @Component({
     selector: 'landing',
     providers: [HTTP_PROVIDERS],
+    directives: [UrlValidator],
     template: `
     <div class="container">
         <div *ngIf="shortUrlView.href">
@@ -17,20 +19,22 @@ import 'rxjs/Rx';
             <br>
             <br>
         </div>
-        <div>
+        <form #createShortUrlForm="ngForm">
             <div class="input-group input-group-lg">
-                <input type="url" class="form-control input-lg" #target (keyup.enter)="createShortUrl(target.value)" target.value='' placeholder="enter a url...">
+                <input type="url" class="form-control input-lg" [(ngModel)]="createShortUrlReqTarget" required validateUrl ngControl="target" placeholder="enter a url...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" (click)=createShortUrl(target.value)>Shorten!</button>
+                    <button class="btn btn-default" type="button" [disabled]="!createShortUrlForm.form.valid" (click)=createShortUrl()>Shorten!</button>
                 </span>
             </div>
-        </div>
+        </form>
     </div>
     `
 })
 export class LandingComponent {
 
     _http:Http;
+
+    createShortUrlReqTarget;
 
     shortUrlView = {};
 
@@ -45,12 +49,12 @@ export class LandingComponent {
         return [[Http]];
     }
 
-    createShortUrl(target:string) {
+    createShortUrl() {
 
         const headers = new Headers({'Content-Type': 'application/json'});
 
         this._http
-            .post('http://api.urlable.com/short-urls', `"${target}"`, {headers: headers})
+            .post('http://api.urlable.com/short-urls', `"${this.createShortUrlReqTarget}"`, {headers: headers})
             .map(res => res.json())
             .subscribe(shortUrlView => {
                 this.shortUrlView = shortUrlView;
