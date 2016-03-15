@@ -7,18 +7,24 @@ import 'rxjs/Rx';
     providers: [HTTP_PROVIDERS],
     template: `
     <div class="container">
-        <div>
-            <div class="form-group">
-                <label for="shortUrlTarget">url to shorten</label>
-                <input type="text" class="form-control" #target (keyup.enter)="createShortUrl(target.value)" target.value=''>
-            </div>
-            <button type="button" class="btn btn-default" (click)=createShortUrl(target.value)>Create Short Url</button>
-        </div>
         <div *ngIf="shortUrlView.href">
-        your short url: is {{shortUrlView.href}}
-        <a [href]="shortUrlView.href">Click To Try it!</a>
+            <div class="alert alert-success" role="alert">
+                Success! Your short url is <code>{{shortUrlView.href}}</code>
+                <a [href]="shortUrlView.href" class="alert-link">Try it!</a>
+            </div>
         </div>
-
+        <div *ngIf="!shortUrlView.href">
+            <br>
+            <br>
+        </div>
+        <div>
+            <div class="input-group input-group-lg">
+                <input type="url" class="form-control input-lg" #target (keyup.enter)="createShortUrl(target.value)" target.value='' placeholder="enter a url...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" (click)=createShortUrl(target.value)>Shorten!</button>
+                </span>
+            </div>
+        </div>
     </div>
     `
 })
@@ -26,7 +32,7 @@ export class LandingComponent {
 
     _http:Http;
 
-    shortUrlView={};
+    shortUrlView = {};
 
     constructor(http:Http) {
 
@@ -49,7 +55,6 @@ export class LandingComponent {
             .subscribe(shortUrlView => {
                 this.shortUrlView = shortUrlView;
                 this.shortUrlView.href = `http://r.urlable.com/${shortUrlView.id}`;
-                alert(`your short url is ${this.shortUrlView.href}`);
             });
     }
 }
