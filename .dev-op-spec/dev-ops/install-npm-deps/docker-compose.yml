@@ -2,7 +2,7 @@ version: "2"
 services:
   install-npm-deps:
     extends:
-      service: src
+      service: working_dir
       file: ../.common/docker-compose.yml
     image: repworth/jspm-cli
     entrypoint: npm install

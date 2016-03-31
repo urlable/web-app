@@ -2,7 +2,7 @@ version: "2"
 services:
   bundle:
     extends:
-      service: src
+      service: working_dir
       file: ../.common/docker-compose.yml
     image: repworth/jspm-cli
-    entrypoint: jspm bundle app dist/bundle.min.js
+    entrypoint: jspm bundle app bundle.min.js

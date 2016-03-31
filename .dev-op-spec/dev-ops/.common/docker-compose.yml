@@ -1,7 +1,7 @@
 version: "2"
 services:
   src:
-    image: scratch
+    image: working_dir
     volumes:
-      - ../../../:/dev-op-spec/website
-    working_dir: /dev-op-spec/website
+      - ../../../:/working_dir
+    working_dir: /working_dir
