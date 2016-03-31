@@ -2,7 +2,7 @@ description: asserts "deliverable quality" and delivers artifacts
 stages:
 - name: install-deps
   type: pipeline
-- name: create-dist-package
-  type: pipeline
+- name: bundle
+  type: dev-op
 - name: deploy-to-s3
   type: dev-op
