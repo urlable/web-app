@@ -12,7 +12,7 @@ services:
     entrypoint: |
       aws s3 sync . s3://urlable-website
       --delete
-      --exclude "node_modules"
-      --exclude "jspm_packages"
-      --exclude ".dev-op-spec"
+      --exclude "node_modules/*"
+      --exclude "jspm_packages/*"
+      --exclude ".dev-op-spec/*"
       --include "jspm_packages/system.js*"
